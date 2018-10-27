@@ -48,13 +48,13 @@ public class TriggeredDoor : MonoBehaviour {
     private void OpenSignal()
     {
         signalCount++;
-        if (signalCount == TriggerSources.Length)
-        {
+        //if (signalCount == TriggerSources.Length)
+        //{
             StopCoroutine(currentCoroutine);
 
             if (DoorState != DoorState.Opening)
                 currentCoroutine = StartCoroutine(lerpOpenDoor());
-        }
+        //}
     }
 
     private void CloseSignal()
