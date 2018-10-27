@@ -3,6 +3,8 @@
 public class PlayerShooting : MonoBehaviour
 {
 
+    public PlayerDrowse PlayerDrowse;
+
     public int damagePerShot = 1;
     public float timeBetweenBullets = 0.15f;
     public float range = 100f;
@@ -12,7 +14,7 @@ public class PlayerShooting : MonoBehaviour
     RaycastHit shootHit;                            
     int shootableMask;
     //ParticleSystem gunParticles;
-    //LineRenderer gunLine;
+    LineRenderer gunLine;
     //AudioSource gunAudio;
     //Light gunLight;
     float effectsDisplayTime = 0.2f;
@@ -22,7 +24,9 @@ public class PlayerShooting : MonoBehaviour
         shootableMask = LayerMask.GetMask("Shootable");
         /*
         gunParticles = GetComponent<ParticleSystem>();
+        */
         gunLine = GetComponent<LineRenderer>();
+        /*
         gunAudio = GetComponent<AudioSource>();
         gunLight = GetComponent<Light>();
         */
@@ -45,7 +49,7 @@ public class PlayerShooting : MonoBehaviour
 
     public void DisableEffects()
     {
-        //gunLine.enabled = false;
+        gunLine.enabled = false;
         //gunLight.enabled = false;
     }
 
@@ -60,9 +64,11 @@ public class PlayerShooting : MonoBehaviour
         gunParticles.Stop();
         gunParticles.Play();
 
+        */
         gunLine.enabled = true;
         gunLine.SetPosition(0, transform.position);
-        */
+
+        PlayerDrowse.CurrentDrowse += 25f;
 
         shootRay.origin = transform.position;
         shootRay.direction = transform.forward;
@@ -76,10 +82,10 @@ public class PlayerShooting : MonoBehaviour
                 enemyHealth.TakeDamage(damagePerShot, shootHit.point);
             }
 
-            //gunLine.SetPosition(1, shootHit.point);
+            gunLine.SetPosition(1, shootHit.point);
         } else
         {
-            //gunLine.SetPosition(1, shootRay.origin + shootRay.direction * range);
+            gunLine.SetPosition(1, shootRay.origin + shootRay.direction * range);
         }
 
     }

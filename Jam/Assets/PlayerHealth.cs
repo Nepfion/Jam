@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-
     public int StartingHealth = 2;
     public int CurrentHealth;
     public Text healthText;
@@ -64,7 +63,9 @@ public class PlayerHealth : MonoBehaviour
 
         playerShooting.DisableEffects();
 
-        anim.SetTrigger("Die");
+
+        Debug.Log("You're dead!");
+        //anim.SetTrigger("Die");
 
         //playerAudio.clip = deathClip;
         playerAudio.Play();

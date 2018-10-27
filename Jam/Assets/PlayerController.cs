@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    public float InitialSpeed = 8;
     public float Speed = 8;
 
     public bool Aiming { get; private set; }
