@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public bool IsDead;
+
     public int StartingHealth = 2;
     public int CurrentHealth;
     public Text healthText;
@@ -15,7 +17,6 @@ public class PlayerHealth : MonoBehaviour
     AudioSource playerAudio;
     PlayerController playerController;
     PlayerShooting playerShooting;
-    bool isDead;
     bool damaged;
 
     private void Awake()
@@ -47,21 +48,22 @@ public class PlayerHealth : MonoBehaviour
 
         CurrentHealth -= amount;
 
-        anim.SetTrigger("Hit");
-
         healthText.text = CurrentHealth.ToString();
 
         //playerAudio.Play();
 
-        if(CurrentHealth <= 0 && !isDead)
+        if(CurrentHealth <= 0 && !IsDead)
         {
             Death();
+            return;
         }
+
+        anim.SetTrigger("Hit");
     }
 
     void Death()
     {
-        isDead = true;
+        IsDead = true;
 
         playerShooting.DisableEffects();
 
