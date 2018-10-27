@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -8,7 +9,10 @@ public class EnemyMovement : MonoBehaviour
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
     NavMeshAgent nav;
+    
     private bool isSleep = true;
+    private bool isRunning = false;
+    public float RunningTime = 5;
     public float WakeupRadiusFromPlayer = 7;
 
     public Vector3 lastTransform;
@@ -31,6 +35,9 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
+        if (isRunning)
+            return;
+
         if (isSleep)
         {
             if (Vector3.Distance(player.position, transform.position) < WakeupRadiusFromPlayer)
@@ -60,5 +67,24 @@ public class EnemyMovement : MonoBehaviour
     public void Wakeup()
     {
         isSleep = false;
+    }
+
+    public void Slap()
+    {
+        isRunning = true;
+        StartCoroutine(Run());
+    }
+
+    private IEnumerator Run()
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * 20;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomDirection, out hit, 20, 1);
+        nav.destination = hit.position;
+        
+        yield return new WaitForSeconds(RunningTime);
+
+        isRunning = false;
     }
 }

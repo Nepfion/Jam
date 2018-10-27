@@ -10,6 +10,7 @@ public class EnemyAttack : MonoBehaviour
     GameObject player;
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
+    EnemyMovement enemyMovement;
     bool playerInRange;
     float timer;
 
@@ -18,6 +19,7 @@ public class EnemyAttack : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
         enemyHealth = GetComponent<EnemyHealth>();
+        enemyMovement = GetComponent<EnemyMovement>();
         //anim = GetComponent<Animator>();
     }
 
@@ -59,7 +61,7 @@ public class EnemyAttack : MonoBehaviour
         if (playerHealth.CurrentHealth > 0)
         {
             playerHealth.TakeDamage(AttackDamage);
-
+            enemyMovement.Slap();
         }
     }
 }
