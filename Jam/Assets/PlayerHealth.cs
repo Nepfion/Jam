@@ -20,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         playerAudio = GetComponent<AudioSource>();
         playerController = GetComponent<PlayerController>();
         playerShooting = GetComponentInChildren<PlayerShooting>();
@@ -47,9 +47,11 @@ public class PlayerHealth : MonoBehaviour
 
         CurrentHealth -= amount;
 
+        anim.SetTrigger("Hit");
+
         healthText.text = CurrentHealth.ToString();
 
-        playerAudio.Play();
+        //playerAudio.Play();
 
         if(CurrentHealth <= 0 && !isDead)
         {
@@ -65,14 +67,13 @@ public class PlayerHealth : MonoBehaviour
 
 
         Debug.Log("You're dead!");
-        //anim.SetTrigger("Die");
+        anim.SetTrigger("Dead");
 
         //playerAudio.clip = deathClip;
-        playerAudio.Play();
+        //playerAudio.Play();
 
         playerController.enabled = false;
         playerShooting.enabled = false;
-
     }
 
 

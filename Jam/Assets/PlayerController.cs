@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public float InitialSpeed = 8;
-    public float Speed = 8;
+    public float InitialSpeed = 4;
+    public float Speed = 4;
 
     public bool Aiming { get; private set; }
     public bool CanMove = true;
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
     private Vector3 startJumpPos, endJumpPos;
 
     Vector3 movement;
-    //Animator anim;
+    Animator anim;
     Rigidbody playerRigidbody;
     int floorMask;
     float camRayLength = 100f;
@@ -25,8 +25,9 @@ public class PlayerController : MonoBehaviour {
     private void Awake()
     {
         floorMask = LayerMask.GetMask("Floor");
+
+        anim = GetComponentInChildren<Animator>();
         isJumping = false;
-        //anim = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
     }
 
@@ -126,7 +127,14 @@ public class PlayerController : MonoBehaviour {
     {
         bool walking = h != 0f || v != 0f;
 
-        //anim.SetBool("isWalking", walking);
+        anim.SetBool("isWalking", walking);
+
+        var dot = Vector3.Dot(transform.position.normalized, (Vector3.forward * v + Vector3.right * h).normalized);
+        var val = Quaternion.LookRotation(transform.forward) * (Vector3.forward * v + Vector3.right * h);
+
+        anim.SetFloat("Speed", val.z * Speed);
+        anim.SetFloat("Turn", val.x);
+
     }
     
 }
