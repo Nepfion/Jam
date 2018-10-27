@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 
     public bool Aiming { get; private set; }
     public bool CanMove = true;
+    public bool isJumping;
 
     Vector3 movement;
     Animator anim;
@@ -19,8 +21,13 @@ public class PlayerController : MonoBehaviour {
     private void Awake()
     {
         floorMask = LayerMask.GetMask("Floor");
+<<<<<<< HEAD
 
         anim = GetComponentInChildren<Animator>();
+=======
+        isJumping = false;
+        //anim = GetComponent<Animator>();
+>>>>>>> 12e7e03c24ead40a46ddf03794e9249e50e38332
         playerRigidbody = GetComponent<Rigidbody>();
     }
 
@@ -29,7 +36,7 @@ public class PlayerController : MonoBehaviour {
         if (GameManager.instance.Paused)
             return;
 
-        if (CanMove)
+        if (CanMove && !isJumping)
         {
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
@@ -72,6 +79,31 @@ public class PlayerController : MonoBehaviour {
 
             playerRigidbody.MoveRotation(newRotation);
         }
+    }
+
+    public void Jump(Vector3 startPos, Vector3 endPos, Func<float, float> movement)
+    {
+        StartCoroutine(lerpJump(startPos, endPos, movement));
+    }
+
+    private IEnumerator lerpJump(Vector3 startPos, Vector3 endPos, Func<float, float> movement)
+    {
+        float jumpTime = 2;
+        isJumping = true;
+        float t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime / jumpTime;
+            Vector3 pos = Vector3.Lerp(startPos, endPos, t);
+
+            pos.y = movement(t);
+            Debug.Log(pos.y);
+            transform.position = pos;
+
+            yield return null;
+        }
+
+        isJumping = false;
     }
 
     void Animating(float h, float v)
