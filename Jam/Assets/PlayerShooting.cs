@@ -92,11 +92,15 @@ public class PlayerShooting : MonoBehaviour
 
         anim.SetTrigger("Shooting");
 
+        if (bulletCount <= 0)
+            return;
+
         GameObject bullet = Instantiate(PlayerAmmo, transform.position, Quaternion.LookRotation(transform.forward, Vector3.up));
+        GetComponentInParent<Rigidbody>().AddForceAtPosition(-50 * transform.forward, transform.position, ForceMode.Impulse);
+
 
         LayerMask mask = LayerMask.GetMask("Shootable");
         Collider[] colliders = Physics.OverlapSphere(transform.position, gunShootSoundRadius);
-        
 
         foreach (var collider in colliders)
         {

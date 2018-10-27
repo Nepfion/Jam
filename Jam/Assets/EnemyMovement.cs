@@ -8,8 +8,7 @@ public class EnemyMovement : MonoBehaviour
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
     NavMeshAgent nav;
-
-    public GameObject Location;
+    
     private bool isSleep = true;
     private bool isRunning = false;
     public float RunningTime = 5;
