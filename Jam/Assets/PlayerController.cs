@@ -10,7 +10,11 @@ public class PlayerController : MonoBehaviour {
 
     public bool Aiming { get; private set; }
     public bool CanMove = true;
+
+    private float jumpTime = 0;
     public bool isJumping;
+    private Func<float, float> jumpFunc;
+    private Vector3 startJumpPos, endJumpPos;
 
     Vector3 movement;
     Animator anim;
@@ -32,7 +36,19 @@ public class PlayerController : MonoBehaviour {
         if (GameManager.instance.Paused)
             return;
 
-        if (CanMove && !isJumping)
+        playerRigidbody.velocity = Vector3.zero;
+        if (isJumping)
+        {
+            jumpTime += Time.fixedDeltaTime / 2;
+            Vector3 pos = Vector3.Lerp(startJumpPos, endJumpPos, jumpTime);
+
+            pos.y = jumpFunc(jumpTime);
+            playerRigidbody.MovePosition(pos);
+
+            if (jumpTime > 1)
+                isJumping = false;
+        }
+        else if (CanMove)
         {
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
@@ -79,7 +95,12 @@ public class PlayerController : MonoBehaviour {
 
     public void Jump(Vector3 startPos, Vector3 endPos, Func<float, float> movement)
     {
-        StartCoroutine(lerpJump(startPos, endPos, movement));
+        jumpTime = 0;
+        isJumping = true;
+        startJumpPos = startPos;
+        endJumpPos = endPos;
+        jumpFunc = movement;
+        //StartCoroutine(lerpJump(startPos, endPos, movement));
     }
 
     private IEnumerator lerpJump(Vector3 startPos, Vector3 endPos, Func<float, float> movement)
