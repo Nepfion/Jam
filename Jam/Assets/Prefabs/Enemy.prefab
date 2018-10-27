@@ -1668,6 +1668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d466f3e7d06954f99744d9fd624b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WakeupRadiusFromPlayer: 5
 --- !u!114 &114652856165633910
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -399,6 +399,7 @@ MonoBehaviour:
   PlayerDrowse: {fileID: 903366474}
   PlayerAmmo: {fileID: 1768139030820560, guid: b2300d7f92ad91543ac66f4585d596b7, type: 2}
   damagePerShot: 1
+  gunShootSoundRadius: 5
   bulletCount: 20
   timeBetweenBullets: 0.15
   range: 100
@@ -594,7 +595,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1779281369517672, guid: 4b51a1e4b929b404bbb6a006aa0f1efe, type: 2}
       propertyPath: m_Layer
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b51a1e4b929b404bbb6a006aa0f1efe, type: 2}
@@ -648,7 +649,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1779281369517672, guid: 4b51a1e4b929b404bbb6a006aa0f1efe, type: 2}
       propertyPath: m_Layer
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b51a1e4b929b404bbb6a006aa0f1efe, type: 2}
@@ -813,7 +814,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4011330273274816, guid: 0a4f7c6e4141a3b4f94acff23f8e9b09, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 130.9278
+      value: 130.91
       objectReference: {fileID: 0}
     - target: {fileID: 4011330273274816, guid: 0a4f7c6e4141a3b4f94acff23f8e9b09, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1348,7 +1349,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1779281369517672, guid: 4b51a1e4b929b404bbb6a006aa0f1efe, type: 2}
       propertyPath: m_Layer
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b51a1e4b929b404bbb6a006aa0f1efe, type: 2}
@@ -1398,7 +1399,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1779281369517672, guid: 4b51a1e4b929b404bbb6a006aa0f1efe, type: 2}
       propertyPath: m_Layer
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b51a1e4b929b404bbb6a006aa0f1efe, type: 2}
@@ -2333,7 +2334,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1779281369517672, guid: 4b51a1e4b929b404bbb6a006aa0f1efe, type: 2}
       propertyPath: m_Layer
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b51a1e4b929b404bbb6a006aa0f1efe, type: 2}
@@ -2958,7 +2959,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1779281369517672, guid: 4b51a1e4b929b404bbb6a006aa0f1efe, type: 2}
       propertyPath: m_Layer
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b51a1e4b929b404bbb6a006aa0f1efe, type: 2}

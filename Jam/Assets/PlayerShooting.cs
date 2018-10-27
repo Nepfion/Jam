@@ -7,6 +7,7 @@ public class PlayerShooting : MonoBehaviour
     public PlayerDrowse PlayerDrowse;
     public GameObject PlayerAmmo;
     public int damagePerShot = 1;
+    public float gunShootSoundRadius = 15;
 
     public int bulletCount = 20;
     public float timeBetweenBullets = 0.15f;
@@ -84,6 +85,19 @@ public class PlayerShooting : MonoBehaviour
         PlayerDrowse.CurrentDrowse += 25f;
 
         GameObject bullet = Instantiate(PlayerAmmo, transform.position, Quaternion.LookRotation(transform.forward));
+
+        LayerMask mask = LayerMask.GetMask("Shootable");
+        Collider[] colliders = Physics.OverlapSphere(transform.position, gunShootSoundRadius);
+        
+
+        foreach (var collider in colliders)
+        {
+            EnemyMovement enemyMovement = collider.GetComponent<EnemyMovement>();
+            if (enemyMovement != null)
+            {
+                enemyMovement.Wakeup();
+            }
+        }
 
         updateBulletCount(-1);
         

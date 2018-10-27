@@ -7,6 +7,8 @@ public class EnemyMovement : MonoBehaviour
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
     NavMeshAgent nav;
+    private bool isSleep = true;
+    public float WakeupRadiusFromPlayer = 7;
 
     private void Awake()
     {
@@ -18,7 +20,15 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        if (nav.isOnNavMesh)
+        if (isSleep)
+        {
+            if (Vector3.Distance(player.position, transform.position) < WakeupRadiusFromPlayer)
+            {
+                isSleep = false;
+            }
+
+        }
+        if (!isSleep && nav.isOnNavMesh)
         {
             if (enemyHealth.CurrentHealth > 0 && playerHealth.CurrentHealth > 0)
             {
@@ -31,4 +41,8 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    public void Wakeup()
+    {
+        isSleep = false;
+    }
 }

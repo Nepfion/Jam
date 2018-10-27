@@ -114,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageAmount: 2
   Speed: 20
+  bulletShotSoundRadius: 3
 --- !u!136 &136581651933561344
 CapsuleCollider:
   m_ObjectHideFlags: 1
