@@ -15,6 +15,9 @@ public class PlayerShooting : MonoBehaviour
 
     float timer;
 
+
+    Animator anim;
+
     public Text ammoText;
     Ray shootRay;
     RaycastHit shootHit;                            
@@ -28,6 +31,9 @@ public class PlayerShooting : MonoBehaviour
     private void Awake()
     {
         shootableMask = LayerMask.GetMask("Shootable");
+
+        anim = PlayerDrowse.gameObject.GetComponentInChildren<Animator>();
+
         /*
         gunParticles = GetComponent<ParticleSystem>();
         */
@@ -83,6 +89,8 @@ public class PlayerShooting : MonoBehaviour
         //gunLine.SetPosition(0, transform.position);
 
         PlayerDrowse.CurrentDrowse += 25f;
+
+        anim.SetTrigger("Shooting");
 
         GameObject bullet = Instantiate(PlayerAmmo, transform.position, Quaternion.LookRotation(transform.forward));
 

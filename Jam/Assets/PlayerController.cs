@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour {
             if (jumpTime > 1)
                 isJumping = false;
         }
-        else if (CanMove)
+        else if (CanMove && !GetComponent<PlayerHealth>().IsDead && !GetComponent<PlayerDrowse>().Sleeping)
         {
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
@@ -132,8 +132,8 @@ public class PlayerController : MonoBehaviour {
         var dot = Vector3.Dot(transform.position.normalized, (Vector3.forward * v + Vector3.right * h).normalized);
         var val = Quaternion.LookRotation(transform.forward) * (Vector3.forward * v + Vector3.right * h);
 
-        anim.SetFloat("Speed", val.z * Speed);
-        anim.SetFloat("Turn", val.x);
+        anim.SetFloat("Forward", -v * Speed);
+        anim.SetFloat("Strafe", h);
 
     }
     

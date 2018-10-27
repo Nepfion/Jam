@@ -15,9 +15,7 @@ public class PlayerDrowse : MonoBehaviour {
 
     public AudioControl AudioControl;
 
-
     Animator anim;
-
 
     private void Awake()
     {
@@ -54,6 +52,9 @@ public class PlayerDrowse : MonoBehaviour {
         DrowseText.text = ((int)CurrentDrowse).ToString() + " / " + StartingDrowse.ToString();
         DrowseImage.color = Color.Lerp(Color.white, Color.clear, CurrentDrowse / StartingDrowse);
         AudioControl.BlendSnapshots(CurrentDrowse, StartingDrowse);
+
+        anim.SetFloat("Sleeping", CurrentDrowse / StartingDrowse);
+
     }
 
 }
