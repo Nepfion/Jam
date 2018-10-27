@@ -21,13 +21,9 @@ public class PlayerController : MonoBehaviour {
     private void Awake()
     {
         floorMask = LayerMask.GetMask("Floor");
-<<<<<<< HEAD
 
         anim = GetComponentInChildren<Animator>();
-=======
         isJumping = false;
-        //anim = GetComponent<Animator>();
->>>>>>> 12e7e03c24ead40a46ddf03794e9249e50e38332
         playerRigidbody = GetComponent<Rigidbody>();
     }
 
