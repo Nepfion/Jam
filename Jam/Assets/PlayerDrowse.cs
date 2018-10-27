@@ -30,7 +30,7 @@ public class PlayerDrowse : MonoBehaviour {
 
     private void Update()
     {
-        if (Sleeping) return;
+        if (Sleeping || GetComponent<PlayerHealth>().IsDead) return;
 
         CurrentDrowse -= DrowseRate * Time.deltaTime;
         if (CurrentDrowse < 0.0f)

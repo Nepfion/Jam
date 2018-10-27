@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
+    Animator anim;
     Transform player;
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
@@ -10,12 +11,22 @@ public class EnemyMovement : MonoBehaviour
     private bool isSleep = true;
     public float WakeupRadiusFromPlayer = 7;
 
+    public Vector3 lastTransform;
+
     private void Awake()
     {
         player = GameObject.FindWithTag("Player").transform;
         playerHealth = player.GetComponent<PlayerHealth>();
         enemyHealth = GetComponent<EnemyHealth>();
         nav = GetComponent<NavMeshAgent>();
+        lastTransform = transform.position;
+    }
+
+    private void Start()
+    {
+        anim = GetComponentInChildren<Animator>();
+        Debug.Log(anim);
+        anim.SetFloat("Sleeping", 1);
     }
 
     private void Update()
@@ -32,10 +43,15 @@ public class EnemyMovement : MonoBehaviour
         {
             if (enemyHealth.CurrentHealth > 0 && playerHealth.CurrentHealth > 0)
             {
+                anim.SetBool("isWalking", true);
+                anim.SetFloat("Forward", (transform.position - lastTransform).normalized.z);
+                anim.SetFloat("Strafe", (transform.position - lastTransform).normalized.x);
                 nav.SetDestination(player.position);
+                lastTransform = transform.position;
             }
             else
             {
+                anim.SetBool("isWalking", false);
                 nav.enabled = false;
             }
         }
