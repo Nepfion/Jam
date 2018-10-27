@@ -92,7 +92,7 @@ public class PlayerShooting : MonoBehaviour
 
         anim.SetTrigger("Shooting");
 
-        GameObject bullet = Instantiate(PlayerAmmo, transform.position, Quaternion.LookRotation(transform.forward));
+        GameObject bullet = Instantiate(PlayerAmmo, transform.position, Quaternion.LookRotation(transform.forward, Vector3.up));
 
         LayerMask mask = LayerMask.GetMask("Shootable");
         Collider[] colliders = Physics.OverlapSphere(transform.position, gunShootSoundRadius);
