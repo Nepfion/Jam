@@ -9,16 +9,16 @@ public class EnemyHealth : MonoBehaviour
     public AudioClip DeathClip;
 
     Animator anim;
-    AudioSource enemyAudio;
-    ParticleSystem hitParticles;
+    //AudioSource enemyAudio;
+    //ParticleSystem hitParticles;
     CapsuleCollider capsuleCollider;
     bool isDead;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        enemyAudio = GetComponent<AudioSource>();
-        hitParticles = GetComponentInChildren<ParticleSystem>();
+        //enemyAudio = GetComponent<AudioSource>();
+        //hitParticles = GetComponentInChildren<ParticleSystem>();
         capsuleCollider = GetComponent<CapsuleCollider>();
 
         CurrentHealth = StartingHealth;
@@ -29,13 +29,13 @@ public class EnemyHealth : MonoBehaviour
         if (isDead)
             return;
 
-        enemyAudio.Play();
+        //enemyAudio.Play();
 
         CurrentHealth -= amount;
 
-        hitParticles.transform.position = hitPoint;
+        //hitParticles.transform.position = hitPoint;
 
-        hitParticles.Play();
+        //hitParticles.Play();
 
         if (CurrentHealth <= 0)
         {
@@ -47,14 +47,14 @@ public class EnemyHealth : MonoBehaviour
     {
         isDead = true;
 
-        capsuleCollider.isTrigger = true;
+        //capsuleCollider.isTrigger = true;
 
-        anim.SetTrigger("Dead");
+        //anim.SetTrigger("Dead");
 
-        GetComponent<NavMeshAgent>().enabled = false;
+        //GetComponent<NavMeshAgent>().enabled = false;
 
-        enemyAudio.clip = DeathClip;
-        enemyAudio.Play();
+        //enemyAudio.clip = DeathClip;
+        //enemyAudio.Play();
     }
 
 }

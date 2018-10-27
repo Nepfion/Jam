@@ -18,13 +18,16 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        if (enemyHealth.CurrentHealth > 0 && playerHealth.CurrentHealth > 0)
+        if (nav.isOnNavMesh)
         {
-            nav.SetDestination(player.position);
-        }
-        else
-        {
-            nav.enabled = false;
+            if (enemyHealth.CurrentHealth > 0 && playerHealth.CurrentHealth > 0)
+            {
+                nav.SetDestination(player.position);
+            }
+            else
+            {
+                nav.enabled = false;
+            }
         }
     }
 

@@ -6,7 +6,7 @@ public class EnemyAttack : MonoBehaviour
     public float TimeBetweenAttacks = 0.5f;
     public int AttackDamage = 1;
 
-    Animator anim;
+    //Animator anim;
     GameObject player;
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
@@ -18,7 +18,7 @@ public class EnemyAttack : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
         enemyHealth = GetComponent<EnemyHealth>();
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -48,7 +48,7 @@ public class EnemyAttack : MonoBehaviour
 
         if (playerHealth.CurrentHealth <= 0)
         {
-            anim.SetTrigger("PlayerDead");
+            //anim.SetTrigger("PlayerDead");
         }
     }
 
