@@ -17,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
     AudioSource playerAudio;
     PlayerController playerController;
     PlayerShooting playerShooting;
+    public Text FinalText;
     bool damaged;
 
     private void Awake()
@@ -70,6 +71,8 @@ public class PlayerHealth : MonoBehaviour
 
         Debug.Log("You're dead!");
         anim.SetTrigger("Dead");
+        FinalText.text = "You died!";
+        FinalText.color = Color.red;
 
         //playerAudio.clip = deathClip;
         //playerAudio.Play();

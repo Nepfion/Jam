@@ -8,6 +8,7 @@ public class PlayerDrowse : MonoBehaviour {
     public float CurrentDrowse;
     public float DrowseRate = 15f;
     public Text DrowseText;
+    public Text FinalText;
     public Image DrowseImage;
     //public AudioClip SleepClip;
 
@@ -38,6 +39,8 @@ public class PlayerDrowse : MonoBehaviour {
             CurrentDrowse = 0.0f;
             Sleeping = true;
             anim.SetTrigger("Sleep");
+            FinalText.text = "You fell asleep!";
+            FinalText.color = Color.yellow;
         }
 
 
