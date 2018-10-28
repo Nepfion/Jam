@@ -33,9 +33,6 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (GameManager.instance.Paused)
-            return;
-
         playerRigidbody.velocity = Vector3.zero;
         if (isJumping)
         {
