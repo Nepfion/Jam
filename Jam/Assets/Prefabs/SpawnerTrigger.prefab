@@ -9,47 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1002320081116400}
+  m_RootGameObject: {fileID: 1571235433367578}
   m_IsPrefabAsset: 1
---- !u!1 &1002320081116400
+--- !u!1 &1571235433367578
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4483151903979672}
-  - component: {fileID: 33967928277346730}
-  - component: {fileID: 23013176695131712}
-  - component: {fileID: 135688435179422600}
-  - component: {fileID: 114098259787434010}
-  - component: {fileID: 54741153896661082}
-  m_Layer: 10
-  m_Name: Bullet
+  - component: {fileID: 4407469592402420}
+  - component: {fileID: 33559287079171390}
+  - component: {fileID: 23905576038080022}
+  - component: {fileID: 65315079842017936}
+  - component: {fileID: 114879375401909118}
+  m_Layer: 0
+  m_Name: SpawnerTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4483151903979672
+--- !u!4 &4407469592402420
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1002320081116400}
+  m_GameObject: {fileID: 1571235433367578}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6, y: 0, z: -1.45}
-  m_LocalScale: {x: 0.19356193, y: 0.19356193, z: 0.19356193}
+  m_LocalPosition: {x: 1.73, y: -1.67, z: -1.53}
+  m_LocalScale: {x: 2.4199, y: 2.4199, z: 2.4199}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23013176695131712
+--- !u!23 &23905576038080022
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1002320081116400}
+  m_GameObject: {fileID: 1571235433367578}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -79,51 +78,34 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33967928277346730
+--- !u!33 &33559287079171390
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1002320081116400}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54741153896661082
-Rigidbody:
+  m_GameObject: {fileID: 1571235433367578}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65315079842017936
+BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1002320081116400}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &114098259787434010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1002320081116400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f844ad24939b8da419e82767b8ea0b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DamageAmount: 2
-  Speed: 20
-  bulletShotSoundRadius: 3
---- !u!135 &135688435179422600
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1002320081116400}
+  m_GameObject: {fileID: 1571235433367578}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114879375401909118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1571235433367578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bb1b7500b75264598dcfb4efa5e0f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Spawner: {fileID: 0}

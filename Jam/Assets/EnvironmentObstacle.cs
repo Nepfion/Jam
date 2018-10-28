@@ -8,12 +8,14 @@ public class EnvironmentObstacle : MonoBehaviour {
     private float timer;
     public bool isDealingDamage;
     private MeshRenderer meshRenderer;
+    private ParticleSystem particleSystem;
 
     private void Start()
     {
         timer = Duration;
         isDealingDamage = true;
         meshRenderer = GetComponent<MeshRenderer>();
+        particleSystem = GetComponent<ParticleSystem>();
     }
 
     private void Update()
@@ -22,9 +24,13 @@ public class EnvironmentObstacle : MonoBehaviour {
         if (timer < 0.0f)
         {
             isDealingDamage = !isDealingDamage;
-            Color color = meshRenderer.material.color;
-            color.a = isDealingDamage ? 1 : 0;
-            meshRenderer.material.color = color;
+            if (isDealingDamage)
+                particleSystem.Play();
+            else
+                particleSystem.Stop();
+            //Color color = meshRenderer.material.color;
+            //color.a = isDealingDamage ? 1 : 0;
+            //meshRenderer.material.color = color;
             timer = Duration;
         }
     }

@@ -95,7 +95,7 @@ public class PlayerShooting : MonoBehaviour
         if (bulletCount <= 0)
             return;
 
-        GameObject bullet = Instantiate(PlayerAmmo, transform.position, Quaternion.LookRotation(transform.forward, Vector3.up));
+        GameObject bullet = Instantiate(PlayerAmmo, transform.position, Quaternion.LookRotation(transform.forward));
         GetComponentInParent<Rigidbody>().AddForceAtPosition(-50 * transform.forward, transform.position, ForceMode.Impulse);
 
 

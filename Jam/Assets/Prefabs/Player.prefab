@@ -1480,7 +1480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerDrowse: {fileID: 114027793999420374}
-  PlayerAmmo: {fileID: 0}
+  PlayerAmmo: {fileID: 1002320081116400, guid: b2300d7f92ad91543ac66f4585d596b7, type: 2}
   damagePerShot: 1
   gunShootSoundRadius: 15
   bulletCount: 20
