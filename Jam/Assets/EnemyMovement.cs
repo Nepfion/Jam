@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     Transform player;
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
+    GameManager GameManager;
     NavMeshAgent nav;
     
     private bool isSleep = true;
@@ -20,6 +21,7 @@ public class EnemyMovement : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindWithTag("Player").transform;
+        GameManager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
         playerHealth = player.GetComponent<PlayerHealth>();
         enemyHealth = GetComponent<EnemyHealth>();
         nav = GetComponent<NavMeshAgent>();
@@ -46,7 +48,7 @@ public class EnemyMovement : MonoBehaviour
             }
 
         }
-        if (!isSleep && nav.isOnNavMesh)
+        if (!isSleep && nav.isOnNavMesh && !GameManager.IsWin)
         {
             if (enemyHealth.CurrentHealth > 0 && playerHealth.CurrentHealth > 0)
             {

@@ -5,17 +5,20 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class Win : MonoBehaviour {
-    public Text winText;
-
+    public Text FinalText;
+    public GameManager GameManager;
     public void OnTriggerEnter(Collider other)
     {
-        PlayerController player = other.GetComponent<PlayerController>();
+        PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
+        PlayerShooting playerShooting = other.gameObject.GetComponentInChildren<PlayerShooting>();
 
-        if (player != null)
+        if (playerController != null)
         {
-            Color color = winText.color;
-            color.a = 1;
-            winText.color = color;
+            FinalText.color = Color.green;
+            FinalText.text = "You won!";
+            playerController.enabled = false;
+            playerShooting.enabled = false;
+            GameManager.IsWin = true;
         }
     }
 }
