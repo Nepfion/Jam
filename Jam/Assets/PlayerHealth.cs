@@ -67,8 +67,7 @@ public class PlayerHealth : MonoBehaviour
         IsDead = true;
 
         playerShooting.DisableEffects();
-
-
+        
         Debug.Log("You're dead!");
         anim.SetTrigger("Dead");
         FinalText.text = "You died!";
