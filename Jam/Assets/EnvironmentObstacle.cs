@@ -24,13 +24,11 @@ public class EnvironmentObstacle : MonoBehaviour {
         if (timer < 0.0f)
         {
             isDealingDamage = !isDealingDamage;
+            var emission = particleSystem.emission;
             if (isDealingDamage)
-                particleSystem.Play();
+                emission.enabled = true;
             else
-                particleSystem.Stop();
-            //Color color = meshRenderer.material.color;
-            //color.a = isDealingDamage ? 1 : 0;
-            //meshRenderer.material.color = color;
+                emission.enabled = false;
             timer = Duration;
         }
     }

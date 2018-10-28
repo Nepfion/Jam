@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class PlayerShooting : MonoBehaviour
 {
-
     public PlayerDrowse PlayerDrowse;
     public GameObject PlayerAmmo;
     public int damagePerShot = 1;
@@ -99,7 +98,7 @@ public class PlayerShooting : MonoBehaviour
             return;
 
         GameObject bullet = Instantiate(PlayerAmmo, transform.position, Quaternion.LookRotation(transform.forward));
-        GetComponentInParent<Rigidbody>().AddForceAtPosition(-50 * transform.forward, transform.position, ForceMode.Impulse);
+        GetComponentInParent<Rigidbody>().AddForceAtPosition(-100 * transform.forward, transform.position, ForceMode.Impulse);
 
 
         LayerMask mask = LayerMask.GetMask("Shootable");
