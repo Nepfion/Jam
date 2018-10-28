@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
 
     public int StartingHealth = 2;
     public int CurrentHealth;
-    public Text healthText;
+    public RectTransform healthPanel;
     public Image damageImage;
     public AudioClip deathClip;
     public float flashSpeed = 5f;
@@ -19,7 +19,6 @@ public class PlayerHealth : MonoBehaviour
     PlayerShooting playerShooting;
     public Text FinalText;
     bool damaged;
-
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -45,11 +44,13 @@ public class PlayerHealth : MonoBehaviour
     */
     public void TakeDamage(int amount)
     {
+        if (GetComponent<PlayerDrowse>().Sleeping) return;
+
         damaged = true;
 
         CurrentHealth -= amount;
-
-        healthText.text = CurrentHealth.ToString();
+        if (healthPanel.childCount > 0)
+            Destroy(healthPanel.GetChild(healthPanel.childCount - 1).gameObject);
 
         //playerAudio.Play();
 
@@ -73,8 +74,8 @@ public class PlayerHealth : MonoBehaviour
         FinalText.text = "You died!";
         FinalText.color = Color.red;
 
-        //playerAudio.clip = deathClip;
-        //playerAudio.Play();
+        playerAudio.clip = deathClip;
+        playerAudio.Play();
 
         playerController.enabled = false;
         playerShooting.enabled = false;

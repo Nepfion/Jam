@@ -16,12 +16,15 @@ public class PlayerDrowse : MonoBehaviour {
     public bool Sleeping = false;
 
     public AudioControl AudioControl;
+    private AudioSource audioSource;
+    public AudioClip Drowse;
 
     Animator anim;
 
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -42,6 +45,8 @@ public class PlayerDrowse : MonoBehaviour {
             anim.SetTrigger("Sleep");
             FinalText.text = "You fell asleep!";
             FinalText.color = Color.yellow;
+            audioSource.clip = Drowse;
+            audioSource.Play();
         }
 
 

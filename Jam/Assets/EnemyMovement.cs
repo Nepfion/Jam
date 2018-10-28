@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour
     NavMeshAgent nav;
     
     private bool isSleep = true;
-    private bool isRunning = false;
+    public bool isRunning = false;
     public float RunningTime = 5;
     public float WakeupRadiusFromPlayer = 7;
 
@@ -37,6 +37,14 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.IsWin)
+            return;
+        if (enemyHealth.CurrentHealth <= 0 && isRunning)
+        {
+            StopCoroutine(cor);
+            nav.SetDestination(transform.position);
+        }
+
         if (isRunning)
             return;
 
@@ -71,10 +79,12 @@ public class EnemyMovement : MonoBehaviour
         isSleep = false;
     }
 
+    private Coroutine cor;
+
     public void Slap()
     {
         isRunning = true;
-        StartCoroutine(Run());
+        cor = StartCoroutine(Run());
     }
 
     private IEnumerator Run()
@@ -88,5 +98,6 @@ public class EnemyMovement : MonoBehaviour
         yield return new WaitForSeconds(RunningTime);
 
         isRunning = false;
+        cor = null;
     }
 }

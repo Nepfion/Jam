@@ -17,13 +17,13 @@ public class PlayerShooting : MonoBehaviour
 
     Animator anim;
 
-    public Text ammoText;
+    public RectTransform ammo;
     Ray shootRay;
     RaycastHit shootHit;                            
     int shootableMask;
     //ParticleSystem gunParticles;
     LineRenderer gunLine;
-    //AudioSource gunAudio;
+    AudioSource gunAudio;
     //Light gunLight;
     float effectsDisplayTime = 0.2f;
 
@@ -32,15 +32,15 @@ public class PlayerShooting : MonoBehaviour
         shootableMask = LayerMask.GetMask("Shootable");
 
         anim = PlayerDrowse.gameObject.GetComponentInChildren<Animator>();
-
+        currentAmmoIndex = 6;
         /*
         gunParticles = GetComponent<ParticleSystem>();
         */
         gunLine = GetComponent<LineRenderer>();
-        /*
+        
         gunAudio = GetComponent<AudioSource>();
-        gunLight = GetComponent<Light>();
-        */
+        //gunLight = GetComponent<Light>();
+        
     }
 
     private void Update()
@@ -67,10 +67,27 @@ public class PlayerShooting : MonoBehaviour
         //gunLight.enabled = false;
     }
 
-    private void updateBulletCount(int change)
+    public Image[] bullets;
+    private int currentAmmoIndex;
+    public void updateBulletCount(int change)
     {
-        bulletCount = Mathf.Max(0, bulletCount + change);
-        ammoText.text = "Ammo: " + bulletCount;
+        bulletCount = Mathf.Clamp(bulletCount + change, 0, 7);
+        if (currentAmmoIndex == 7)
+            return;
+            
+
+        if (change > 0)
+        {
+            bullets[currentAmmoIndex++ + 1].enabled = true;
+            Debug.Log("Incr " + bulletCount + " || " + currentAmmoIndex);
+        }
+        else
+        {
+            bullets[currentAmmoIndex--].enabled = false;
+            Debug.Log("Decr " + bulletCount + " || " + currentAmmoIndex);
+
+        }
+
     }
     void Shoot()
     {
@@ -78,9 +95,9 @@ public class PlayerShooting : MonoBehaviour
 
         if (bulletCount <= 0)
             return;
-        /*
+        
         gunAudio.Play();
-
+        /*
         gunLight.enabled = true;
 
         gunParticles.Stop();
@@ -93,12 +110,10 @@ public class PlayerShooting : MonoBehaviour
         PlayerDrowse.CurrentDrowse += 25f;
 
         anim.SetTrigger("Shooting");
-
-        if (bulletCount <= 0)
-            return;
+        
 
         GameObject bullet = Instantiate(PlayerAmmo, transform.position, Quaternion.LookRotation(transform.forward));
-        GetComponentInParent<Rigidbody>().AddForceAtPosition(-100 * transform.forward, transform.position, ForceMode.Impulse);
+        //GetComponentInParent<Rigidbody>().AddForceAtPosition(-100 * transform.forward, transform.position, ForceMode.Impulse);
 
 
         LayerMask mask = LayerMask.GetMask("Shootable");

@@ -9,6 +9,7 @@ public class EnemyAttack : MonoBehaviour
     //Animator anim;
     GameObject player;
     PlayerHealth playerHealth;
+    PlayerDrowse playerDrowse;
     EnemyHealth enemyHealth;
     EnemyMovement enemyMovement;
     bool playerInRange;
@@ -18,6 +19,7 @@ public class EnemyAttack : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
+        playerDrowse = player.GetComponent<PlayerDrowse>();
         enemyHealth = GetComponent<EnemyHealth>();
         enemyMovement = GetComponent<EnemyMovement>();
         //anim = GetComponent<Animator>();
@@ -43,7 +45,7 @@ public class EnemyAttack : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer >= TimeBetweenAttacks && playerInRange && enemyHealth.CurrentHealth > 0)
+        if (timer >= TimeBetweenAttacks && playerInRange && enemyHealth.CurrentHealth > 0 && !enemyMovement.isRunning)
         {
             Attack();
         }
@@ -61,6 +63,7 @@ public class EnemyAttack : MonoBehaviour
         if (playerHealth.CurrentHealth > 0)
         {
             playerHealth.TakeDamage(AttackDamage);
+            playerDrowse.CurrentDrowse = 100;
             enemyMovement.Slap();
         }
     }
