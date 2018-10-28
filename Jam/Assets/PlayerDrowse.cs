@@ -10,6 +10,7 @@ public class PlayerDrowse : MonoBehaviour {
     public Text DrowseText;
     public Text FinalText;
     public Image DrowseImage;
+    public Color SleepColor = new Color(1, 1, 1);
     //public AudioClip SleepClip;
 
     public bool Sleeping = false;
@@ -53,7 +54,7 @@ public class PlayerDrowse : MonoBehaviour {
         PlayerController.Speed = PlayerController.InitialSpeed * CurrentDrowse / StartingDrowse;
 
         DrowseText.text = ((int)CurrentDrowse).ToString() + " / " + StartingDrowse.ToString();
-        DrowseImage.color = Color.Lerp(Color.white, Color.clear, CurrentDrowse / StartingDrowse);
+        DrowseImage.color = Color.Lerp(SleepColor, Color.clear, CurrentDrowse / StartingDrowse);
         AudioControl.BlendSnapshots(CurrentDrowse, StartingDrowse);
 
         anim.SetFloat("Sleeping", CurrentDrowse / StartingDrowse);
