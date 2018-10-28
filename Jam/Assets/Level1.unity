@@ -52,8 +52,8 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 1
-    m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 0
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 10
     m_Resolution: 2
@@ -75,7 +75,7 @@ LightmapSettings:
     m_BakeBackend: 1
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
-    m_PVRSampleCount: 500
+    m_PVRSampleCount: 10
     m_PVRBounces: 1
     m_PVRFilterTypeDirect: 0
     m_PVRFilterTypeIndirect: 0
@@ -1832,6 +1832,21 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 23770575282090764, guid: b23e5be9ef1ac4c45b532fb7fb0f7edf,
+        type: 2}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23770575282090764, guid: b23e5be9ef1ac4c45b532fb7fb0f7edf,
+        type: 2}
+      propertyPath: m_ScaleInLightmap
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 23770575282090764, guid: b23e5be9ef1ac4c45b532fb7fb0f7edf,
+        type: 2}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 64144204347426068, guid: b23e5be9ef1ac4c45b532fb7fb0f7edf, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b23e5be9ef1ac4c45b532fb7fb0f7edf, type: 2}
@@ -3052,6 +3067,21 @@ Prefab:
     - target: {fileID: 1890846794957816, guid: 754cf91f22b8fd14495f7dd8ce051aae, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 23424848766945410, guid: 754cf91f22b8fd14495f7dd8ce051aae,
+        type: 2}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23424848766945410, guid: 754cf91f22b8fd14495f7dd8ce051aae,
+        type: 2}
+      propertyPath: m_ScaleInLightmap
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 23424848766945410, guid: 754cf91f22b8fd14495f7dd8ce051aae,
+        type: 2}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 64906447126063560, guid: 754cf91f22b8fd14495f7dd8ce051aae, type: 2}
@@ -4359,6 +4389,21 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 9.484412
       objectReference: {fileID: 0}
+    - target: {fileID: 23424848766945410, guid: 754cf91f22b8fd14495f7dd8ce051aae,
+        type: 2}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23424848766945410, guid: 754cf91f22b8fd14495f7dd8ce051aae,
+        type: 2}
+      propertyPath: m_ScaleInLightmap
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 23424848766945410, guid: 754cf91f22b8fd14495f7dd8ce051aae,
+        type: 2}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 64906447126063560, guid: 754cf91f22b8fd14495f7dd8ce051aae, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 754cf91f22b8fd14495f7dd8ce051aae, type: 2}
@@ -4616,6 +4661,21 @@ Prefab:
     - target: {fileID: 1679570630772280, guid: b23e5be9ef1ac4c45b532fb7fb0f7edf, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 23770575282090764, guid: b23e5be9ef1ac4c45b532fb7fb0f7edf,
+        type: 2}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23770575282090764, guid: b23e5be9ef1ac4c45b532fb7fb0f7edf,
+        type: 2}
+      propertyPath: m_ScaleInLightmap
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 23770575282090764, guid: b23e5be9ef1ac4c45b532fb7fb0f7edf,
+        type: 2}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 64144204347426068, guid: b23e5be9ef1ac4c45b532fb7fb0f7edf, type: 2}
