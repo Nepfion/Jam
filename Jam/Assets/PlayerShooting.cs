@@ -46,6 +46,9 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update()
     {
+
+        if (PlayerDrowse.Sleeping) return;
+
         timer += Time.deltaTime;
 
         if(Input.GetButton("Fire1") && timer >= timeBetweenBullets)
